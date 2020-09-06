@@ -1,4 +1,3 @@
-
 <?php
 
 require_once("functions.php");
@@ -21,7 +20,6 @@ if(isset($_POST["submit"])){  // $_POSTにsubmitが存在するか？
     // $stmt->bindValue(2, $priority, PDO::PARAM_STR);
     // $stmt->execute();
 
-
     // ? は:hogeで代替できる
     $sql = "insert into phptodo (name, done, priority) values (:name, 0, :priority)";  // SQLインジェクション対策のプレースホルダ(=?)
     $stmt = $dbh->prepare($sql);
@@ -33,11 +31,16 @@ if(isset($_POST["submit"])){  // $_POSTにsubmitが存在するか？
     $stmt->bindValue(":priority", $priority, PDO::PARAM_STR);
     $stmt->execute();
 
-
-
     $dbh = null;
     unset($name);
     unset($priority);
+
+}
+
+if(isset($_POST["end"])){
+  
+  $name = $_POST["name"];
+  print $name;
 }
 
 ?>
@@ -98,13 +101,31 @@ $stmt->execute();
 while($task = $stmt->fetch(PDO::FETCH_ASSOC)){  // カラム名をkeyとして連想配列を返す
 
   if ($task["priority"] == "high"){
+
+    $taskName = $task["name"];
+
     print "<li>";
     print "<span class='high'>";
     print $task["name"];
     print "</span>";
     print " ";
+    print "<form name='$taskName' method='post'>";
+
+    print '
+    <form method="POST" action="myFileName.php">
+    <input type="submit" name="end">';
+
+    print '<input type="hidden" name="name" value="';
+    print $task["name"];
+    print '"/>';
+
+
+    print'</form>';
+
     // print $task["priority"];
     print "</li>";
+
+
   }
 
   else if ($task["priority"] == "middle"){
