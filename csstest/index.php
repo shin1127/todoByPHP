@@ -120,17 +120,17 @@ while($task = $stmt->fetch(PDO::FETCH_ASSOC)){  // カラム名をkeyとして�
     print $task["name"];
     print "</span>";
     print " ";
-    print "<form name='$taskName' method='post'>";
+    // print "<form name='$taskName' method='post'>";
 
     print '
     <form method="POST" action="myFileName.php">
-    <input type="submit" name="end">';
+    <input type="submit" name="end" value="END">';
 
     print '<input type="hidden" name="id" value="';
     print $task["id"];
     print '"/>';
 
-
+    print 'END';
     print'</form>';
 
     // print $task["priority"];
