@@ -1,3 +1,4 @@
+
 <?php
 
 require_once("functions.php");
@@ -25,8 +26,8 @@ if(isset($_POST["submit"])){  // $_POSTにsubmitが存在するか？
     $sql = "insert into phptodo (name, done, priority) values (:name, 0, :priority)";  // SQLインジェクション対策のプレースホルダ(=?)
     $stmt = $dbh->prepare($sql);
 
-    print("PARAM_STRは ");
-    print(PDO::PARAM_STR);
+    // print("PARAM_STRは ");
+    // print(PDO::PARAM_STR);
 
     $stmt->bindValue(":name", $name, PDO::PARAM_STR);
     $stmt->bindValue(":priority", $priority, PDO::PARAM_STR);
@@ -41,33 +42,50 @@ if(isset($_POST["submit"])){  // $_POSTにsubmitが存在するか？
 
 ?>
 
+
+
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TODO by PHP</title>
-</head>
-<body>
-    <h1>todo by PHP</h1>
-    <h2>やること</h2>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="hoge.css" />
+    <title>Document</title>
+  </head>
+  <body>
 
-    <form action="index.php" method="post">
-    <div>タスク名</div>
-    <input type="text" name="name"><br>
-    <select name="priority">
-    <option value="high">高い</option>
-    <option value="middle">普通</option>
-    <option value="row">低い</option>
-    </select>
+
+
+  <form action="index.php" method="post">
+    <span>Task Name</span>
+    <input type="text" name="name">
     <br>
+    <span>Priority</span>
 
-    <button type="submit" name="submit">追加</button>
+
+    <select name="priority">
+
+
+    <option value="high">High</option>
+    <option value="middle">Middle</option>
+    <option value="low">Low</option>
+    </select>
+    
+<br>
+    <button type="submit" name="submit">ADD</button>
     </form>
 
-    <br>
 
-<?php
+
+    <div class="compare-box">
+      <div class="compare-left-wrap">
+        <div class="compare-left-head">Do</div>
+        <div class="compare-left">
+          <ul class="list">
+
+
+          <?php
 
 $dbh = db_connect();
 
@@ -77,16 +95,73 @@ $stmt = $dbh->query($sql);
 $stmt->execute();
 
 
-while($task = $stmt->fetch(PDO::FETCH_ASSOC)){
+while($task = $stmt->fetch(PDO::FETCH_ASSOC)){  // カラム名をkeyとして連想配列を返す
 
-    print "<br>";
+  if ($task["priority"] == "high"){
+    print "<li>";
+    print "<span class='high'>";
     print $task["name"];
-    print $task["priority"];
+    print "</span>";
+    print " ";
+    // print $task["priority"];
+    print "</li>";
+  }
+
+  else if ($task["priority"] == "middle"){
+    print "<li>";
+    print "<span class='middle'>";
+    print $task["name"];
+    print "</span>";
+    print " ";
+    print "</li>";
+  }
+
+  else{
+    print "<li>";
+    print "<span class='low'>";
+    print $task["name"];
+    print "</span>";
+    print " ";
+    print "</li>";
+  }
+
 };
 
 
 ?>
 
+          </ul>
+        </div>
+      </div>
+      <div class="compare-right-wrap">
+        <div class="compare-right-head">Done</div>
+        <div class="compare-right">
+          <ul class="list">
+
+          <?php
+
+$dbh = db_connect();
+
+$sql = "select id, name, priority from phptodo where done = 1 order by id desc;";
+
+$stmt = $dbh->query($sql);
+$stmt->execute();
+
+
+while($task = $stmt->fetch(PDO::FETCH_ASSOC)){  // カラム名をkeyとして連想配列を返す
+
+    print "<li>";
+    print $task["name"];
+    print $task["priority"];
+    print "</li>";
+};
+
+
+?>
+          </ul>
+        </div>
+      </div>
+    </div>
 
     
 </body>

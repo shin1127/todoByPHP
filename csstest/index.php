@@ -69,7 +69,7 @@ if(isset($_POST["submit"])){  // $_POSTにsubmitが存在するか？
 
     <option value="high">High</option>
     <option value="middle">Middle</option>
-    <option value="row">Low</option>
+    <option value="low">Low</option>
     </select>
     
 <br>
@@ -109,13 +109,21 @@ while($task = $stmt->fetch(PDO::FETCH_ASSOC)){  // カラム名をkeyとして�
 
   else if ($task["priority"] == "middle"){
     print "<li>";
+    print "<span class='middle'>";
     print $task["name"];
+    print "</span>";
     print " ";
-    print $task["priority"];
     print "</li>";
   }
 
-
+  else{
+    print "<li>";
+    print "<span class='low'>";
+    print $task["name"];
+    print "</span>";
+    print " ";
+    print "</li>";
+  }
 
 };
 
