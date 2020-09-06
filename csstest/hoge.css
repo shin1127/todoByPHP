@@ -1,0 +1,182 @@
+.high {
+  color: red;
+}
+
+/************************************
+** 比較表
+************************************/
+/* 比較表全体 */
+.compare-box {
+  display: -webkit-box; /* 配置 */
+  display: -ms-flexbox; /* 配置 */
+  display: flex; /* 配置 */
+  max-width: 600px; /* 横幅 */
+  margin: 0 auto 2rem; /* 余白 */
+  border-radius: 4px; /* 角丸 */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* 影 */
+  background: #fef9ed; /* 背景色 */
+}
+/* 左のボックス、右のボックス */
+.compare-box .compare-left-wrap,
+.compare-box .compare-right-wrap {
+  width: 50%; /* 横幅半分ずつ */
+  overflow: hidden; /* はみ出さないように*/
+}
+/* 左のタイトル、右のタイトル */
+.compare-box .compare-left-head,
+.compare-box .compare-right-head {
+  background: #fdc44f; /* 背景色 */
+  text-align: center; /* 中央寄せ */
+  color: #fff; /* 文字色 */
+  font-weight: bold; /* 文字太さ */
+  padding: 0em 1em; /* 余白 */
+  font-size: 15px; /* 文字大きさ */
+  line-height: 1.5; /* 行間 */
+  height: 65px; /* 縦幅 */
+  display: table-cell; /* 形式 */
+  vertical-align: middle; /* 高さ中央寄せ */
+  width: 1000px; /* 横幅 */
+}
+/* 左のタイトル */
+.compare-box .compare-left-head {
+  border-radius: 4px 0 0 0; /* 角丸 */
+}
+/* 右のタイトル */
+.compare-box .compare-right-head {
+  border-radius: 0 4px 0 0; /* 角丸 */
+}
+/* 左のコンテンツ、右のコンテンツ */
+.compare-box .compare-left,
+.compare-box .compare-right {
+  padding: 1.5em; /* 余白 */
+  font-size: 15px; /* 文字大きさ */
+  line-height: 2; /* 行間 */
+  text-align: justify; /* 段落両端 */
+  text-justify: inter-ideograph; /* 段落両端 */
+}
+/* 文章 */
+.compare-box p {
+  padding: 0; /* 余白 */
+  margin: 0 0 20px 0; /* 余白 */
+}
+/*スマホで見たとき*/
+@media screen and (max-width: 480px) {
+  /* 左のタイトル、右のタイトル */
+  .compare-box .compare-left-head,
+  .compare-box .compare-right-head {
+    font-size: 12px; /* 文字大きさ */
+    height: 50px; /* 高さ */
+  }
+  /* 左のコンテンツ、右のコンテンツ */
+  .compare-box .compare-left,
+  .compare-box .compare-right {
+    padding: 1.2em; /* 余白 */
+    font-size: 12px; /* 文字大きさ */
+  }
+}
+/************************************
+  ** 比較表 箇条書き(記号)
+  ************************************/
+/* 箇条書き(記号) */
+.compare-box .list {
+  list-style: none !important; /* 行頭記号リセット */
+  padding: 0 !important; /* 余白リセット */
+  margin: 0 !important; /* 余白リセット */
+  border: none !important; /* 線リセット */
+}
+/* 箇条書き 行 */
+.compare-box .list li {
+  border-bottom: 1px dashed #cdcdcd; /* 線(太さ 種類　色) */
+  position: relative; /* 配置 */
+  margin: 0.5em 0 !important; /* 余白 */
+  max-width: 500px; /* 横幅 */
+  padding: 0 0 0.7em 1.4em !important; /* 余白 */
+  line-height: 1.8; /* 行間 */
+}
+/* 箇条書き 行最後 */
+.compare-box .list li:last-child {
+  border: none;
+}
+/* 箇条書き 行頭記号 */
+.compare-box .list li:before {
+  background-color: #ffa952; /* 色 */
+  position: absolute; /* 配置 */
+  content: ""; /* 空文字 */
+  top: 10px; /* 上からの距離 */
+  left: 7px; /* 下からの距離 */
+  width: 7px; /* 横幅 */
+  height: 7px; /* 縦幅 */
+  border-radius: 4px; /* 角丸 */
+}
+/*スマホで見たとき*/
+@media screen and (max-width: 480px) {
+  /* 箇条書き 行頭記号 */
+  .compare-box .list li:before {
+    top: 9px; /* 上からの距離 */
+    left: 3px; /* 下からの距離 */
+    width: 5px; /* 横幅 */
+    height: 5px; /* 縦幅 */
+  }
+}
+/************************************
+  ** 比較表　箇条書き(番号)
+  ************************************/
+/* 箇条書き(番号) */
+.compare-box .list-number {
+  counter-reset: number; /* 番号リセット */
+  list-style: none !important; /* 行頭番号削除) */
+  padding: 0 !important; /* 余白リセット */
+  margin: 0 !important; /* 余白リセット */
+  border: none !important; /* 線リセット */
+}
+/* 箇条書き(番号) 行 */
+.compare-box .list-number li {
+  position: relative; /* 配置 */
+  margin: 0.5em 0 !important; /* 余白 */
+  max-width: 500px; /* 横幅 */
+  padding: 0 0 0.5em 1.8em !important; /* 余白 */
+  line-height: 1.8; /* 行間 */
+  border-bottom: 1px dashed #cdcdcd; /* 線(太さ 種類　色) */
+}
+/* 箇条書き 行最後 */
+.compare-box .list-number li:last-child {
+  border: none;
+}
+/* 箇条書き(番号) 行頭番号 */
+.compare-box .list-number li:before {
+  counter-increment: number; /* 番号 */
+  content: counter(number); /* 番号 */
+  background-color: #fdc44f; /* 背景色 */
+  color: #fff; /* 番号色 */
+  position: absolute; /* 配置 */
+  font-weight: bold; /* 文字太さ */
+  font-size: 12px; /* 文字大きさ */
+  border-radius: 50%; /* 角丸 */
+  left: 0; /* 左からの距離 */
+  top: 5px; /* 上からの距離 */
+  width: 18px; /* 横幅 */
+  height: 18px; /* 縦幅 */
+  line-height: 18px; /* 行間 */
+  text-align: center; /* 中央寄せ */
+}
+/* 箇条書き 行頭記号リセット */
+.compare-box .list-number li:after {
+  content: "";
+}
+/*スマホで見た時*/
+@media screen and (max-width: 480px) {
+  /* 箇条書き(番号) 行 */
+  .compare-box .list-number li {
+    padding: 0 0 0.5em 1.8em !important; /* 余白 */
+  }
+  /* 箇条書き(番号) 行頭番号 */
+  .compare-box .list-number li:before {
+    font-size: 10px; /* 文字大きさ */
+    width: 16px; /* 横幅 */
+    height: 16px; /* 縦幅 */
+    line-height: 16px; /* 行間 */
+    top: 2px; /* 上からの距離 */
+  }
+}
+
+/* https://ponhiro.com/comparison-table/ */
