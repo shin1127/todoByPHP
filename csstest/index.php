@@ -39,8 +39,19 @@ if(isset($_POST["submit"])){  // $_POSTにsubmitが存在するか？
 
 if(isset($_POST["end"])){
   
-  $name = $_POST["name"];
-  print $name;
+  $id = $_POST["id"];
+  print $id;
+  $dbh = db_connect();
+
+  $sql = "update phptodo set done = 1 where id = $id ";
+
+  $stmt = $dbh->prepare($sql);
+  $stmt->execute();
+
+  $dbh = null;
+  unset($id);
+
+
 }
 
 ?>
@@ -115,8 +126,8 @@ while($task = $stmt->fetch(PDO::FETCH_ASSOC)){  // カラム名をkeyとして�
     <form method="POST" action="myFileName.php">
     <input type="submit" name="end">';
 
-    print '<input type="hidden" name="name" value="';
-    print $task["name"];
+    print '<input type="hidden" name="id" value="';
+    print $task["id"];
     print '"/>';
 
 
