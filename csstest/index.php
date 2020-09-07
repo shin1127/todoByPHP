@@ -1,14 +1,9 @@
 <?php
-
 require_once("functions.php");
 
 addTodo();
-
 updateDone();
-
 ?>
-
-
 
 
 <!DOCTYPE html>
@@ -21,28 +16,20 @@ updateDone();
   </head>
   <body>
 
-
-
   <form action="index.php" method="post">
     <span>Task Name</span>
     <input type="text" name="name">
     <br>
     <span>Priority</span>
 
-
     <select name="priority">
-
-
     <option value="high">High</option>
     <option value="middle">Middle</option>
     <option value="low">Low</option>
     </select>
-    
-<br>
+    <br>
     <button type="submit" name="submit">ADD</button>
     </form>
-
-
 
     <div class="compare-box">
       <div class="compare-left-wrap">
@@ -50,14 +37,7 @@ updateDone();
         <div class="compare-left">
           <ul class="list">
 
-
-          <?php
-
-showDo();
-
-
-
-?>
+          <?php showDo(); ?>
 
           </ul>
         </div>
@@ -67,17 +47,11 @@ showDo();
         <div class="compare-right">
           <ul class="list">
 
-          <?php
+          <?php showDone(); ?>
 
-showDone();
-
-
-?>
           </ul>
         </div>
       </div>
     </div>
-
-    
 </body>
 </html>
