@@ -57,21 +57,36 @@ function showDo(){
     
         $taskName = $task["name"];
     
-        print "<li>";
-        print "<span class='high'>";
-        print $task["name"];
-        print "</span>";
-        print " ";
-        print '
+        echo <<< HEREDOC
+        <li>
+        <span class='high'>
+        ${task["name"]}
+        </span>
+        
+        
         <form method="POST" action="index.php">
-        <input type="submit" name="end" value=">END">';
-    
-        print '<input type="hidden" name="id" value="';
-        print $task['id'];
-        print '"/>';
-        print'</form>';
-        print "</li>";
+        <input type="submit" name="end" value=">END">
+        <input type="hidden" name="id" value="${task['id']}"/>
+        </form>
+        </li>
+        HEREDOC;
       }
+
+    //     print "<li>";
+    //     print "<span class='high'>";
+    //     print $task["name"];
+    //     print "</span>";
+    //     print " ";
+    //     print '
+    //     <form method="POST" action="index.php">
+    //     <input type="submit" name="end" value=">END">';
+    
+    //     print '<input type="hidden" name="id" value="';
+    //     print $task['id'];
+    //     print '"/>';
+    //     print'</form>';
+    //     print "</li>";
+    //   }
     
       else if ($task["priority"] == "middle"){
         print "<li>";
