@@ -18,4 +18,22 @@ function db_connect(){
         print "エラー:" . $e->getMessage() . "<br>";
         die();
     }
-}
+};
+
+function updateDone(){
+
+    if(isset($_POST["end"])){
+  
+        $id = $_POST["id"];
+        print $id;
+        $dbh = db_connect();
+      
+        $sql = "update phptodo set done = 1 where id = $id ";
+      
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute();
+      
+        $dbh = null;
+        unset($id);
+    };
+};

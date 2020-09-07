@@ -34,25 +34,23 @@ if(isset($_POST["submit"])){  // $_POSTにsubmitが存在するか？
     $dbh = null;
     unset($name);
     unset($priority);
-
 }
 
-if(isset($_POST["end"])){
+// if(isset($_POST["end"])){ // functions.phpに分けた
   
-  $id = $_POST["id"];
-  print $id;
-  $dbh = db_connect();
+//   $id = $_POST["id"];
+//   print $id;
+//   $dbh = db_connect();
 
-  $sql = "update phptodo set done = 1 where id = $id ";
+//   $sql = "update phptodo set done = 1 where id = $id ";
 
-  $stmt = $dbh->prepare($sql);
-  $stmt->execute();
+//   $stmt = $dbh->prepare($sql);
+//   $stmt->execute();
 
-  $dbh = null;
-  unset($id);
+//   $dbh = null;
+//   unset($id);
 
-
-}
+updateDone();
 
 ?>
 
@@ -120,23 +118,15 @@ while($task = $stmt->fetch(PDO::FETCH_ASSOC)){  // カラム名をkeyとして�
     print $task["name"];
     print "</span>";
     print " ";
-    // print "<form name='$taskName' method='post'>";
-
     print '
-    <form method="POST" action="myFileName.php">
-    <input type="submit" name="end" value="END">';
+    <form method="POST" action="index.php">
+    <input type="submit" name="end" value=">END">';
 
     print '<input type="hidden" name="id" value="';
-    print $task["id"];
+    print $task['id'];
     print '"/>';
-
-    print 'END';
     print'</form>';
-
-    // print $task["priority"];
     print "</li>";
-
-
   }
 
   else if ($task["priority"] == "middle"){
@@ -145,6 +135,14 @@ while($task = $stmt->fetch(PDO::FETCH_ASSOC)){  // カラム名をkeyとして�
     print $task["name"];
     print "</span>";
     print " ";
+    print '
+    <form method="POST" action="index.php">
+    <input type="submit" name="end" value=">END">';
+
+    print '<input type="hidden" name="id" value="';
+    print $task['id'];
+    print '"/>';
+    print'</form>';
     print "</li>";
   }
 
@@ -154,6 +152,14 @@ while($task = $stmt->fetch(PDO::FETCH_ASSOC)){  // カラム名をkeyとして�
     print $task["name"];
     print "</span>";
     print " ";
+    print '
+    <form method="POST" action="index.php">
+    <input type="submit" name="end" value=">END">';
+
+    print '<input type="hidden" name="id" value="';
+    print $task['id'];
+    print '"/>';
+    print'</form>';
     print "</li>";
   }
 
