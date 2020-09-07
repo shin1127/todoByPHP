@@ -2,39 +2,41 @@
 
 require_once("functions.php");
 
-if(isset($_POST["submit"])){  // $_POSTにsubmitが存在するか？
+addTodo();
 
-    $name = $_POST["name"];
-    $name = htmlspecialchars($name, ENT_QUOTES);  // SQLインジェクション対策の関数
+// if(isset($_POST["submit"])){  // $_POSTにsubmitが存在するか？
 
-    $priority = $_POST["priority"];
+//     $name = $_POST["name"];
+//     $name = htmlspecialchars($name, ENT_QUOTES);  // SQLインジェクション対策の関数
 
-    $dbh = db_connect();
+//     $priority = $_POST["priority"];
 
-    // $sql = "insert into phptodo (name, done, priority) values (?, 0, ?)";  // SQLインジェクション対策のプレースホルダ(=?)
-    // $stmt = $dbh->prepare($sql);
+//     $dbh = db_connect();
 
-    // $stmt->bindValue(1, $name, PDO::PARAM_STR);  // 第一引数：何番目の?か　第二：対応する文字列を格納した変数など　第三：第二引数がどのデータ型になるかを指定する
-                                                    // PDO::PARAM_STRの実態はINT型の2
+//     // $sql = "insert into phptodo (name, done, priority) values (?, 0, ?)";  // SQLインジェクション対策のプレースホルダ(=?)
+//     // $stmt = $dbh->prepare($sql);
 
-    // $stmt->bindValue(2, $priority, PDO::PARAM_STR);
-    // $stmt->execute();
+//     // $stmt->bindValue(1, $name, PDO::PARAM_STR);  // 第一引数：何番目の?か　第二：対応する文字列を格納した変数など　第三：第二引数がどのデータ型になるかを指定する
+//                                                     // PDO::PARAM_STRの実態はINT型の2
 
-    // ? は:hogeで代替できる
-    $sql = "insert into phptodo (name, done, priority) values (:name, 0, :priority)";  // SQLインジェクション対策のプレースホルダ(=?)
-    $stmt = $dbh->prepare($sql);
+//     // $stmt->bindValue(2, $priority, PDO::PARAM_STR);
+//     // $stmt->execute();
 
-    // print("PARAM_STRは ");
-    // print(PDO::PARAM_STR);
+//     // ? は:hogeで代替できる
+//     $sql = "insert into phptodo (name, done, priority) values (:name, 0, :priority)";  // SQLインジェクション対策のプレースホルダ(=?)
+//     $stmt = $dbh->prepare($sql);
 
-    $stmt->bindValue(":name", $name, PDO::PARAM_STR);
-    $stmt->bindValue(":priority", $priority, PDO::PARAM_STR);
-    $stmt->execute();
+//     // print("PARAM_STRは ");
+//     // print(PDO::PARAM_STR);
 
-    $dbh = null;
-    unset($name);
-    unset($priority);
-}
+//     $stmt->bindValue(":name", $name, PDO::PARAM_STR);
+//     $stmt->bindValue(":priority", $priority, PDO::PARAM_STR);
+//     $stmt->execute();
+
+//     $dbh = null;
+//     unset($name);
+//     unset($priority);
+// }
 
 // if(isset($_POST["end"])){ // functions.phpに分けた
   
@@ -63,7 +65,7 @@ updateDone();
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="hoge.css" />
-    <title>Document</title>
+    <title>PHP TODO</title>
   </head>
   <body>
 
@@ -99,71 +101,72 @@ updateDone();
 
           <?php
 
-$dbh = db_connect();
+showDo();
+// $dbh = db_connect();
 
-$sql = "select id, name, priority from phptodo where done = 0 order by id desc;";
+// $sql = "select id, name, priority from phptodo where done = 0 order by id desc;";
 
-$stmt = $dbh->query($sql);
-$stmt->execute();
+// $stmt = $dbh->query($sql);
+// $stmt->execute();
 
 
-while($task = $stmt->fetch(PDO::FETCH_ASSOC)){  // カラム名をkeyとして連想配列を返す
+// while($task = $stmt->fetch(PDO::FETCH_ASSOC)){  // カラム名をkeyとして連想配列を返す
 
-  if ($task["priority"] == "high"){
+//   if ($task["priority"] == "high"){
 
-    $taskName = $task["name"];
+//     $taskName = $task["name"];
 
-    print "<li>";
-    print "<span class='high'>";
-    print $task["name"];
-    print "</span>";
-    print " ";
-    print '
-    <form method="POST" action="index.php">
-    <input type="submit" name="end" value=">END">';
+//     print "<li>";
+//     print "<span class='high'>";
+//     print $task["name"];
+//     print "</span>";
+//     print " ";
+//     print '
+//     <form method="POST" action="index.php">
+//     <input type="submit" name="end" value=">END">';
 
-    print '<input type="hidden" name="id" value="';
-    print $task['id'];
-    print '"/>';
-    print'</form>';
-    print "</li>";
-  }
+//     print '<input type="hidden" name="id" value="';
+//     print $task['id'];
+//     print '"/>';
+//     print'</form>';
+//     print "</li>";
+//   }
 
-  else if ($task["priority"] == "middle"){
-    print "<li>";
-    print "<span class='middle'>";
-    print $task["name"];
-    print "</span>";
-    print " ";
-    print '
-    <form method="POST" action="index.php">
-    <input type="submit" name="end" value=">END">';
+//   else if ($task["priority"] == "middle"){
+//     print "<li>";
+//     print "<span class='middle'>";
+//     print $task["name"];
+//     print "</span>";
+//     print " ";
+//     print '
+//     <form method="POST" action="index.php">
+//     <input type="submit" name="end" value=">END">';
 
-    print '<input type="hidden" name="id" value="';
-    print $task['id'];
-    print '"/>';
-    print'</form>';
-    print "</li>";
-  }
+//     print '<input type="hidden" name="id" value="';
+//     print $task['id'];
+//     print '"/>';
+//     print'</form>';
+//     print "</li>";
+//   }
 
-  else{
-    print "<li>";
-    print "<span class='low'>";
-    print $task["name"];
-    print "</span>";
-    print " ";
-    print '
-    <form method="POST" action="index.php">
-    <input type="submit" name="end" value=">END">';
+//   else{
+//     print "<li>";
+//     print "<span class='low'>";
+//     print $task["name"];
+//     print "</span>";
+//     print " ";
+//     print '
+//     <form method="POST" action="index.php">
+//     <input type="submit" name="end" value=">END">';
 
-    print '<input type="hidden" name="id" value="';
-    print $task['id'];
-    print '"/>';
-    print'</form>';
-    print "</li>";
-  }
+//     print '<input type="hidden" name="id" value="';
+//     print $task['id'];
+//     print '"/>';
+//     print'</form>';
+//     print "</li>";
+//   }
 
-};
+// };
 
 
 ?>
@@ -178,21 +181,23 @@ while($task = $stmt->fetch(PDO::FETCH_ASSOC)){  // カラム名をkeyとして�
 
           <?php
 
-$dbh = db_connect();
+showDone();
 
-$sql = "select id, name, priority from phptodo where done = 1 order by id desc;";
+// $dbh = db_connect();
 
-$stmt = $dbh->query($sql);
-$stmt->execute();
+// $sql = "select id, name, priority from phptodo where done = 1 order by id desc;";
+
+// $stmt = $dbh->query($sql);
+// $stmt->execute();
 
 
-while($task = $stmt->fetch(PDO::FETCH_ASSOC)){  // カラム名をkeyとして連想配列を返す
+// while($task = $stmt->fetch(PDO::FETCH_ASSOC)){  // カラム名をkeyとして連想配列を返す
 
-    print "<li>";
-    print $task["name"];
-    print $task["priority"];
-    print "</li>";
-};
+//     print "<li>";
+//     print $task["name"];
+//     print $task["priority"];
+//     print "</li>";
+// };
 
 
 ?>
