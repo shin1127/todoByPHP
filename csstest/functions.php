@@ -53,82 +53,53 @@ function showDo(){
     
     while($task = $stmt->fetch(PDO::FETCH_ASSOC)){  // カラム名をkeyとして連想配列を返す
     
-      if ($task["priority"] == "high"){
+        if ($task["priority"] == "high"){
     
-        $taskName = $task["name"];
+            $taskName = $task["name"];
     
-        echo <<< HEREDOC
-        <li>
-        <span class='high'>
-        ${task["name"]}
-        </span>
-        
-        
-        <form method="POST" action="index.php">
-        <input type="submit" name="end" value=">END">
-        <input type="hidden" name="id" value="${task['id']}"/>
-        </form>
-        </li>
-        HEREDOC;
-      }
-
-    //     print "<li>";
-    //     print "<span class='high'>";
-    //     print $task["name"];
-    //     print "</span>";
-    //     print " ";
-    //     print '
-    //     <form method="POST" action="index.php">
-    //     <input type="submit" name="end" value=">END">';
+            echo <<< HEREDOC
+                <li>
+                <span class='high'>
+                ${task["name"]}
+                </span>
+                <form method="POST" action="index.php">
+                <input type="submit" name="end" value=">END">
+                <input type="hidden" name="id" value="${task['id']}"/>
+                </form>
+                </li>
+            HEREDOC;
+        }
+        else if($task["priority"] == "middle"){
+            echo <<< HEREDOC
+            <li>
+            <span class='middle'>
+            ${task["name"]}
+            </span>
+            <form method="POST" action="index.php">
+            <input type="submit" name="end" value=">END">
+            <input type="hidden" name="id" value="{$task['id']}"/>
+            </form>
+            </li>
+            HEREDOC;
+        }
     
-    //     print '<input type="hidden" name="id" value="';
-    //     print $task['id'];
-    //     print '"/>';
-    //     print'</form>';
-    //     print "</li>";
-    //   }
-    
-      else if ($task["priority"] == "middle"){
-        print "<li>";
-        print "<span class='middle'>";
-        print $task["name"];
-        print "</span>";
-        print " ";
-        print '
-        <form method="POST" action="index.php">
-        <input type="submit" name="end" value=">END">';
-    
-        print '<input type="hidden" name="id" value="';
-        print $task['id'];
-        print '"/>';
-        print'</form>';
-        print "</li>";
-      }
-    
-      else{
-        print "<li>";
-        print "<span class='low'>";
-        print $task["name"];
-        print "</span>";
-        print " ";
-        print '
-        <form method="POST" action="index.php">
-        <input type="submit" name="end" value=">END">';
-    
-        print '<input type="hidden" name="id" value="';
-        print $task['id'];
-        print '"/>';
-        print'</form>';
-        print "</li>";
-      }
-    
-    };
+        else{
+            echo <<< HEREDOC
+            <li>
+            <span class='low'>
+            ${task["name"]}
+            </span>
+            <form method="POST" action="index.php">
+            <input type="submit" name="end" value=">END">
+            <input type="hidden" name="id" value="${task['id']}"/>
+            </form>
+            </li>
+            HEREDOC;
+        }
+    }
 
 
-}
-
-
-
+};
 
 
 
@@ -149,9 +120,9 @@ function showDone(){
         print $task["name"];
         print $task["priority"];
         print "</li>";
-    };
+    }
 
-}
+};
 
 function addTodo(){
 
@@ -189,5 +160,4 @@ function addTodo(){
         unset($priority);
     }
 
-
-}
+};
