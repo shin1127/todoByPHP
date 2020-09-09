@@ -3,6 +3,7 @@ require_once("functions.php");
 
 addTodo();
 updateDone();
+deleteDone();
 ?>
 
 

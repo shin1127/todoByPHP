@@ -39,7 +39,7 @@ function updateDone(){
 };
 
 function deleteDone(){
-    if(isset($_POTS["delete"])){
+    if(isset($_POST["delete"])){
 
         $id = $_POST["id"];
         $dbh = db_connect();
@@ -94,7 +94,7 @@ function showDo(){
             </span>
             <form method="POST" action="index.php">
             <input type="submit" name="end" value="->Done">
-            <input type="hidden" name="id" value="{$task['id']}"/>
+            <input type="hidden" name="id" value="${task['id']}"/>
             </form>
             </li>
             HEREDOC;
