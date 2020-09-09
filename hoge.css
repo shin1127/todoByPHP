@@ -14,6 +14,18 @@
   padding-left: 10px;
 }
 
+h1{
+  text-align: center;
+}
+
+.addingTodo{
+  text-align:center;
+}
+
+body{
+  background-color: #DDDDDD;
+}
+
 /* button {
   background-color: transparent;
   border: none;

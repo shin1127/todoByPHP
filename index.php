@@ -16,6 +16,8 @@ updateDone();
   </head>
   <body>
 
+  <h1>TODO by PHP</h1>
+  <div class="addingTodo">
   <form action="index.php" method="post">
     <span>Task Name</span>
     <input type="text" name="name">
@@ -30,6 +32,11 @@ updateDone();
     <br>
     <button type="submit" name="submit">ADD</button>
     </form>
+
+
+
+  </div>
+
 
     <div class="compare-box">
       <div class="compare-left-wrap">

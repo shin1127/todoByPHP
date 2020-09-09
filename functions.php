@@ -63,7 +63,7 @@ function showDo(){
                 ${task["name"]}
                 </span>
                 <form method="POST" action="index.php">
-                <input type="submit" name="end" value=">END">
+                <input type="submit" name="end" value="->Done">
                 <input type="hidden" name="id" value="${task['id']}"/>
                 </form>
                 </li>
@@ -76,7 +76,7 @@ function showDo(){
             ${task["name"]}
             </span>
             <form method="POST" action="index.php">
-            <input type="submit" name="end" value=">END">
+            <input type="submit" name="end" value="->Done">
             <input type="hidden" name="id" value="{$task['id']}"/>
             </form>
             </li>
@@ -90,7 +90,7 @@ function showDo(){
             ${task["name"]}
             </span>
             <form method="POST" action="index.php">
-            <input type="submit" name="end" value=">END">
+            <input type="submit" name="end" value="->Done">
             <input type="hidden" name="id" value="${task['id']}"/>
             </form>
             </li>
