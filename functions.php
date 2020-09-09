@@ -137,7 +137,7 @@ function showDone(){
         echo <<< HEREDOC
         <li>
         ${task["name"]}
-        <form method="POST" action="index.php>
+        <form method="POST" action="index.php">
         <input type="submit" name="delete" value="->Delete">
         <input type="hidden" name="id" value="${task['id']}"/>
         </form>
