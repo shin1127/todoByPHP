@@ -25,7 +25,7 @@ function updateDone(){
     if(isset($_POST["end"])){
   
         $id = $_POST["id"];
-        print $id;
+        // print $id;
         $dbh = db_connect();
       
         $sql = "update phptodo set done = 1 where id = $id ";
@@ -37,6 +37,23 @@ function updateDone(){
         unset($id);
     };
 };
+
+function deleteDone(){
+    if(isset($_POTS["delete"])){
+
+        $id = $_POST["id"];
+        $dbh = db_connect();
+
+        $sql = "update phptodo set done = 2 where id = $id";
+
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute();
+      
+        $dbh = null;
+        unset($id);
+
+    }
+}
 
 
 
@@ -116,11 +133,17 @@ function showDone(){
 
     while($task = $stmt->fetch(PDO::FETCH_ASSOC)){  // カラム名をkeyとして連想配列を返す
 
-        print "<li>";
-        print $task["name"];
-        print $task["priority"];
-        print "</li>";
-    }
+        $taskName = $task["name"];
+        echo <<< HEREDOC
+        <li>
+        ${task["name"]}
+        <form method="POST" action="index.php>
+        <input type="submit" name="delete" value="->Delete">
+        <input type="hidden" name="id" value="${task['id']}"/>
+        </form>
+        </li>
+        HEREDOC;
+    };
 
 };
 

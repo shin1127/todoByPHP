@@ -20,7 +20,7 @@ updateDone();
   <div class="addingTodo">
   <form action="index.php" method="post">
     <span>Task Name</span>
-    <input type="text" name="name">
+    <input type="text" name="name" required="required">
     <br>
     <span>Priority</span>
 
