@@ -19,23 +19,20 @@ deleteDone();
 
   <h1>TODO by PHP</h1>
   <div class="addingTodo">
-  <form action="index.php" method="post">
-    <span>Task Name</span>
-    <input type="text" name="name" required="required">
-    <br>
-    <span>Priority</span>
+    <form action="index.php" method="post">
+      <span>Task Name</span>
+      <input type="text" name="name" required="required">
+      <br>
+      <span>Priority</span>
 
-    <select name="priority">
-    <option value="high">High</option>
-    <option value="middle">Middle</option>
-    <option value="low">Low</option>
-    </select>
-    <br>
-    <button type="submit" name="submit">ADD</button>
-    </form>
-
-
-
+      <select name="priority">
+      <option value="high">High</option>
+      <option value="middle">Middle</option>
+      <option value="low">Low</option>
+      </select>
+      <br>
+      <button type="submit" name="submit">ADD</button>
+      </form>
   </div>
 
 
