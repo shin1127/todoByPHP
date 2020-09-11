@@ -1,8 +1,11 @@
 # todoByPHP
-create todo app by PHP
-this app incruds CRUD functions.
+
+# Description
+I created todo app by PHP.
+this app contains CRUD functions.
 
 # Background
+I wanted to practice CRUD operation in PHP and decided createting TODO app.
 
 # Qiita/Output
 
