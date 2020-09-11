@@ -18,3 +18,4 @@ in the future, I wanto to create unique app.
 
 - PHP 7.4.3
 - MariaDB Ver 15.1 Distrib 10.4.11-MariaDB, for Win64 (AMD64)
+- XAMPP 7.4.3
