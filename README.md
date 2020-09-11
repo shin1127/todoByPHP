@@ -6,6 +6,7 @@ this app contains CRUD functions.
 
 # Background
 I wanted to practice CRUD operation in PHP and decided createting TODO app.
+in the future, I wanto to create unique app.
 
 # Qiita/Output
 
