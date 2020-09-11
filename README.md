@@ -11,3 +11,6 @@ this app incruds CRUD functions.
 # Things I learned
 
 # development environment
+
+- PHP 7.4.3
+- MariaDB Ver 15.1 Distrib 10.4.11-MariaDB, for Win64 (AMD64)
