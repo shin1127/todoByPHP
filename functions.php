@@ -51,12 +51,8 @@ function deleteDone(){
       
         $dbh = null;
         unset($id);
-
     }
 }
-
-
-
 
 function showDo(){
 
@@ -114,10 +110,7 @@ function showDo(){
             HEREDOC;
         }
     }
-
-
 };
-
 
 
 function showDone(){
@@ -182,5 +175,4 @@ function addTodo(){
         unset($name);
         unset($priority);
     }
-
 };
