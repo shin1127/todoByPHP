@@ -6,7 +6,7 @@ this app contains CRUD functions.
 
 # Background
 I wanted to practice CRUD operation in PHP and decided createting TODO app.  
-in the future, I want to create unique app.
+In the future, I want to create unique app.
 
 # Qiita/Output
 
@@ -14,7 +14,7 @@ in the future, I want to create unique app.
 
 # Things I learned
 
-# development environment
+# Development environment
 
 - PHP 7.4.3
 - MariaDB Ver 15.1 Distrib 10.4.11-MariaDB, for Win64 (AMD64)
